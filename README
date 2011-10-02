@@ -12,6 +12,11 @@ repacked isn't designed for creating packages out of Python modules or Ruby gems
 
 repacked isn't designed to convert one type of package to another. Use alien for that.
 
+Installing
+----------
+
+Download this repository and run python setup.py install.
+
 Quick start
 -----------
 
