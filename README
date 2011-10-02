@@ -52,7 +52,7 @@ expect is as follows:
 
 You would then start repacked as follows, assuming you're in the file tree above:
     
-    python repacked.py packagespec
+    repacked.py packagespec
 
 Package formats
 ---------------
