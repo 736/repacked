@@ -1,0 +1,9 @@
+[Core]
+Name = rpm
+Module = rpm
+
+[Documentation]
+Author = Jonathan Prior
+Version = 100
+Website = http://opensource.736cs.com/
+Description = Compiles and creates build trees for RPM packages

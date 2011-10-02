@@ -1,0 +1,75 @@
+repacked
+--------
+
+repacked is a command line tool bourne out of the lack of good tools to build cross-distro Linux packages from binaries. It was made free software by 736, the company behind Gameolith (http://www.gameolith.com) in October 2011.
+
+With repacked, you just write a package spec, create a directory with the files structured exactly where they'll be placed on the system, and run repacked on the package spec file. It'll spit out all the packages you want.
+
+What repacked isn't
+-------------------
+
+repacked isn't designed for creating packages out of Python modules or Ruby gems. Use FPM for that. https://github.com/jordansissel/fpm
+
+repacked isn't designed to convert one type of package to another. Use alien for that.
+
+Quick start
+-----------
+
+Package specifications are written in YAML. You can actually name the file whatever you want, but for the sake of clarity we'll name this one "packagespec".
+
+   name: hello-world
+   version: 1.0
+   maintainer: Joe Bloggs <joe.bloggs@example.com>
+   summary: Warmly welcoming the world
+   description: >
+      Hello World is an application to say hello to the world.
+   
+   scripts:
+      postinst: SCRIPTS/postinst
+   
+   packagetree: BUILD/
+
+   packages:
+    - package: debian
+      architecture: 32-bit
+      requires: libc6, libstdc++6
+    - package: rpm
+      architecture: 64-bit
+      requires: libc.so.6, libstdc++.so.6
+
+Hopefully the above example should be fairly self-explanatory.
+Just for reference, the file tree that the above spec file would
+expect is as follows:
+
+    ┌── BUILD [directory]
+    │   [ repacked automatically picks up all the files under
+    │     this directory. ]
+    │
+    ├── SCRIPTS [directory]
+    │   └── postinst
+    │
+    └── packagespec
+
+You would then start repacked as follows, assuming you're in the file tree above:
+    
+    python repacked.py packagespec
+
+Package formats
+---------------
+
+Package formats are actually plugins. repacked comes with two plugins to start you off:
+ - debian: creates deb packages
+ - rpm: creates rpm packages
+
+We'll accept plugins for other packaging systems too, and we may even use them on Gameolith.
+
+If you want to create a new plugin, we recommend copying the source of an existing plugin and using that as your starting point. Here's a few things you should know:
+ - To create control or spec files, you should use Mako templates.
+ - The plugin system checks for a .plugin file in the plugins/ directory, it's an ini file containing basic information about the plugin. module is the Python module that contains your plugin.
+ - The first method of a plugin that repacked calls is tree(). That acts as a surrogate __init__(). tree() creates all the files necessary to build the package in a temporary directory.
+ - The second method called is build(), which calls the build application (e.g. dpkg-deb or rpmbuild) and creates the package.
+
+Further links
+-------------
+
+http://opensource.736cs.com/

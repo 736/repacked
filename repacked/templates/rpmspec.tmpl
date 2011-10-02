@@ -1,0 +1,43 @@
+Buildroot: ${build_dir}
+Name: ${package_name}
+Version: ${version}
+Release: 1
+Summary: ${summary}
+License: ${license}
+Group: Amusements/Games
+Packager: ${maintainer}
+Requires: ${dependencies}
+
+AutoReqProv: no
+
+%%define _rpmdir ${output_dir}
+%%define _rpmfilename ${package_name}_${version}_${architecture}.rpm
+%%define _unpackaged_files_terminate_build 0
+
+% if prein:
+%%pre
+${prein}
+% endif
+
+% if postin:
+%%post
+${postin}
+% endif
+
+% if preun:
+%%preun
+${preun}
+% endif
+
+% if postun:
+%%postun
+${postun}
+% endif
+
+%%description
+
+${description}
+
+%%files
+${"\n".join(file_list)}
+
