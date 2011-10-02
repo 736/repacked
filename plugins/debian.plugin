@@ -1,9 +1,0 @@
-[Core]
-Name = debian
-Module = debian
-
-[Documentation]
-Author = Jonathan Prior
-Version = 100
-Website = http://opensource.736cs.com/
-Description = Compiles and creates build trees for Debian packages
