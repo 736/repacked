@@ -24,8 +24,6 @@ import distutils.dir_util
 import shutil
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
-
 plugin_dir = os.path.join(os.path.dirname(__file__),'../../repacked/plugins')
 pkg_plugins = {}
 
