@@ -11,7 +11,7 @@ from yapsy.PluginManager import PluginManager
 __author__ = "Jonathan Prior"
 __copyright__ = "Copyright 2011, 736 Computing Services Limited"
 __license__ = "LGPL"
-__version__ = "100"
+__version__ = "101"
 __maintainer__ = "Jonathan Prior"
 __email__ = "jjprior@736cs.com"
 
@@ -43,6 +43,7 @@ def parse_spec(filename):
 
     fp = open(filename, 'r')
     spec = yaml.safe_load("\n".join(fp.readlines()))
+
     return spec
 
 def build_packages(spec, output):

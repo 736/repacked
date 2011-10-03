@@ -6,8 +6,9 @@ Summary: ${summary}
 License: ${license}
 Group: Amusements/Games
 Packager: ${maintainer}
+% if dependencies:
 Requires: ${dependencies}
-
+% endif
 AutoReqProv: no
 
 %%define _rpmdir ${output_dir}

@@ -78,7 +78,7 @@ class DebianPackager(IPlugin):
             size=os.path.getsize(tmpdir),
             summary=spec['summary'],
             description="\n .\n ".join(re.split(r"\n\s\s*", spec['description'].strip())),
-            dependencies=package['requires'],
+            dependencies=package.get('requires'),
         )
 
         cf.write(cf_final)

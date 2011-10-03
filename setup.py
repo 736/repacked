@@ -7,7 +7,7 @@ except:
 
 import sys, os
 
-version = '100'
+version = '101'
 
 setup(name='repacked',
       version=version,
