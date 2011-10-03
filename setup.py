@@ -12,7 +12,7 @@ version = '100'
 setup(name='repacked',
       version=version,
       description="repacked is a simple way to build multiple deb/RPM packages from a single directoryy",
-      long_description= open("repacked/README").read(),
+      long_description=open("README").read(),
       classifiers=[
          'Development Status :: 3 - Alpha',
          'Environment :: Console',
