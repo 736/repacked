@@ -113,7 +113,7 @@ class PRMPackager(IPlugin):
             maintainer=spec['maintainer'],
             summary=spec['summary'],
             description=spec['description'],
-            dependencies=package['requires'],
+            dependencies=package.get('requires'),
             architecture=self.checkarch(package['architecture']),
             file_list=filelist,
             license="N/A",
