@@ -17,7 +17,13 @@ Suggests: ${suggests}
 Enhances: ${enhances}
 % endif
 % if predepends:
-Pre-Depends: {$predepends}
+Pre-Depends: ${predepends}
+% endif
+% if conflicts:
+Conflicts: ${conflicts}
+% endif
+% if provides:
+Provides: ${provides}
 % endif
 Installed-Size: ${size}
 Description: ${summary}

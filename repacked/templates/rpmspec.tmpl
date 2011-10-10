@@ -9,6 +9,18 @@ Packager: ${maintainer}
 % if dependencies:
 Requires: ${dependencies}
 % endif
+% if obsoletes:
+Obsoletes: ${obsoletes}
+% endif
+% if conflicts:
+Conflicts: ${conflicts}
+% endif
+% if provides:
+Provides: ${provides}
+% endif
+% if predepends:
+Requires(pre): ${predepends}
+% endif
 AutoReqProv: no
 
 %%define _rpmdir ${output_dir}

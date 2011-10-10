@@ -13,7 +13,7 @@ import sys
 
 tmpl_dir = os.path.join(os.path.dirname(__file__),'../../repacked/templates')
 
-class PRMPackager(IPlugin):
+class RPMPackager(IPlugin):
     def __init__(self):
         self.spec = {}
         self.package = {}
@@ -114,6 +114,9 @@ class PRMPackager(IPlugin):
             summary=spec['summary'],
             description=spec['description'],
             dependencies=package.get('requires'),
+            obsoletes=package.get('replaces'),
+            conflicts=package.get('conflicts'),
+            provides=package.get('provides'),
             architecture=self.checkarch(package['architecture']),
             file_list=filelist,
             license="N/A",

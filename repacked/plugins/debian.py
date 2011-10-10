@@ -79,6 +79,10 @@ class DebianPackager(IPlugin):
             summary=spec['summary'],
             description="\n .\n ".join(re.split(r"\n\s\s*", spec['description'].strip())),
             dependencies=package.get('requires'),
+            predepends=package.get('predepends'),
+            replaces=package.get('replaces'),
+            provides=package.get('provides'),
+            conflicts=package.get('conflicts'),
         )
 
         cf.write(cf_final)

@@ -55,6 +55,8 @@ expect is as follows:
     │
     └── packagespec
 
+The scripts supported by repacked are preinst, postinst, prerm, postrm
+
 You would then start repacked as follows, assuming you're in the file tree above:
     
     repacked.py packagespec
