@@ -88,6 +88,31 @@ class DebianPackager(IPlugin):
         cf.write(cf_final)
         cf.close()
         
+        ## Check for lintian overrides and add them to the build tree
+        overrides = package.get('lintian-overrides')
+        
+        if overrides:
+            lint_tmpl = "{package}: {override}\n"
+            lintfile = ""
+            
+            overrides = overrides.split(",")
+            
+            for o in overrides:
+                override = o.strip()
+                lintfile += lint_tmpl.format(package=spec['name'], override=override)
+            
+            try:
+                os.makedirs(os.path.join(tmpdir, "usr/share/lintian/overrides"))
+                do_overrides = True
+            except:
+                # Directory exists, skip it
+                do_overrides = False
+            
+            if do_overrides:
+                lf = open(os.path.join(tmpdir, "usr/share/lintian/overrides", spec['name'])
+                lf.write(lintfile)
+                lf.close()
+                
         ## Copy over installation scripts
         
         try:
