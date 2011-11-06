@@ -109,7 +109,7 @@ class DebianPackager(IPlugin):
                 do_overrides = False
             
             if do_overrides:
-                lf = open(os.path.join(tmpdir, "usr/share/lintian/overrides", spec['name'])
+                lf = open(os.path.join(tmpdir, "usr/share/lintian/overrides", spec['name']))
                 lf.write(lintfile)
                 lf.close()
                 
