@@ -32,6 +32,6 @@ setup(name='repacked',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-          'mako', 'yapsy', 'pyyaml'
+          'mako', 'Yapsy==1.9', 'pyyaml'
       ],
 )
