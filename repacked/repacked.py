@@ -25,6 +25,10 @@ import shutil
 import logging
 
 plugin_dir = os.path.join(os.path.dirname(__file__),'../../repacked/plugins')
+
+if not os.path.exists(plugin_dir):
+    plugin_dir = os.path.join(os.path.dirname(__file__), 'plugins')
+
 pkg_plugins = {}
 
 pluginMgr = PluginManager(plugin_info_ext="plugin")
@@ -85,13 +89,18 @@ def main():
     """
 
     parser = optparse.OptionParser(description="Creates deb and RPM packages from files defined in a package specification.",
-                                   prog="packager", version=__version__, usage="%prog [path to package specification]")
+                                   prog="repacked.py", version=__version__, usage="%prog specfile [options]")
     parser.add_option('--outputdir', '-o', default='.', help="packages will be placed in the specified directory")
     parser.add_option('--no-clean', action="store_true", help="Don't remove temporary files used to build packages")
     options, arguments = parser.parse_args()
 
     # Parse the specification
-    spec = parse_spec(arguments[0])
+    try:
+        spec = parse_spec(arguments[0])
+    except IndexError:
+        parser.print_usage()
+        print("Run with --help option for more information.")
+        sys.exit(0)
 
     # Import the plugins
     print("Enumerating plugins...")
