@@ -24,10 +24,10 @@ import distutils.dir_util
 import shutil
 import logging
 
-plugin_dir = os.path.join(os.path.dirname(__file__),'../../repacked/plugins')
+plugin_dir = os.path.expanduser("~/.repacked/plugins")
 
 if not os.path.exists(plugin_dir):
-    plugin_dir = os.path.join(os.path.dirname(__file__), 'plugins')
+    plugin_dir = os.path.join(os.path.dirname(__file__),'../../repacked/plugins')
 
 pkg_plugins = {}
 

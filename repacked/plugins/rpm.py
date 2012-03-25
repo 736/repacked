@@ -11,7 +11,10 @@ import tempfile
 import re
 import sys
 
-tmpl_dir = os.path.join(os.path.dirname(__file__),'../../repacked/templates')
+tmpl_dir = os.path.expanduser("~/.repacked/templates")
+
+if not os.path.exists(tmpl_dir):
+    tmpl_dir = os.path.join(os.path.dirname(__file__),'../../repacked/templates')
 
 class RPMPackager(IPlugin):
     def __init__(self):
