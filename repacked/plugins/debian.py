@@ -52,7 +52,7 @@ class DebianPackager(IPlugin):
         
         self.spec = spec
         self.package = package
-        self.output = output
+        self.output_dir = output
         
         ## Create directories
 
